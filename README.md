@@ -5,3 +5,5 @@ Group: Terminators
  
 Project Proposal: [CSE360_06_Terminators.pdf](https://github.com/ShariaAfrin/COMPUTER-INTERFACING/files/9001985/CSE360_06_Terminators.pdf)
 
+Project Video Link: https://www.youtube.com/watch?v=hK5ry_cmSmg
+
