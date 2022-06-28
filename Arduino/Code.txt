@@ -1,0 +1,53 @@
+#define USE_ARDUINO_INTERRUPTS true   
+#include <PulseSensorPlayground.h>     // It includes the PulseSensorPlayground Library.   
+
+//  Variables
+const int Pulse_Wire = 0;       // PulseSensor PURPLE WIRE connected to ANALOG PIN 0
+const int LED_13 = 13;          // On-board Arduino LED(PIN 13).
+int Threshold = 650;           // Includes which Signal to count as a beat.
+int val;
+int Pin= 1;                               // Use the "Gettting Started Project" to fine-tune Threshold Value beyond default setting.
+                               // Otherwise leave the default "650" value. 
+                               
+PulseSensorPlayground pulseSensor;  // Creates an instance of the PulseSensorPlayground object called "pulseSensor"
+
+
+void setup() {   
+
+  Serial.begin(9600);          // Used in case of Serial Monitor
+
+  // Configuration of the PulseSensor object
+  pulseSensor.analogInput(Pulse_Wire);   
+  pulseSensor.blinkOnPulse(LED_13);       // Blinking Arduino's LED with heartbeat automatically.
+  pulseSensor.setThreshold(Threshold);   
+
+  
+  if (pulseSensor.begin()) {
+  
+ }
+}
+
+
+
+void loop() {
+
+ int beats_per_min = pulseSensor.getBeatsPerMinute();  
+ val = analogRead(Pin);
+float m= (val/1024.0)*5000;
+float f= m/10;
+
+                                             
+if (pulseSensor.sawStartOfBeat()) { 
+           
+ Serial.println(f); 
+             
+ Serial.print(beats_per_min);  
+
+
+Serial.println();
+}
+
+
+  delay(20);                 
+
+}
